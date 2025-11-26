@@ -1,0 +1,32 @@
+Pool: (235317, 8)
+Orphans: (2104, 8)
+Split: 1
+Train: (189936, 8)
+Valid: (23532, 8)
+Test1: (23532, 8)
+Test2: (421, 8)
+
+Split: 2
+Train: (189936, 8)
+Valid: (23532, 8)
+Test1: (23532, 8)
+Test2: (421, 8)
+
+Split: 3
+Train: (189937, 8)
+Valid: (23531, 8)
+Test1: (23532, 8)
+Test2: (421, 8)
+
+Split: 4
+Train: (189937, 8)
+Valid: (23531, 8)
+Test1: (23532, 8)
+Test2: (421, 8)
+
+Split: 5
+Train: (189938, 8)
+Valid: (23531, 8)
+Test1: (23532, 8)
+Test2: (420, 8)
+

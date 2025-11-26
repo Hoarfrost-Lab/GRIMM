@@ -1,0 +1,29 @@
+Split:  1
+Train: (185418, 8)
+Valid: (26966, 8)
+Test1: (24617, 8)
+Test2: (420, 8)
+
+Split:  2
+Train: (185418, 8)
+Valid: (26966, 8)
+Test1: (24617, 8)
+Test2: (420, 8)
+
+Split:  3
+Train: (185418, 8)
+Valid: (26966, 8)
+Test1: (24617, 8)
+Test2: (420, 8)
+
+Split:  4
+Train: (185418, 8)
+Valid: (26966, 8)
+Test1: (24617, 8)
+Test2: (420, 8)
+
+Split:  5
+Train: (185418, 8)
+Valid: (26966, 8)
+Test1: (24617, 8)
+Test2: (420, 8)

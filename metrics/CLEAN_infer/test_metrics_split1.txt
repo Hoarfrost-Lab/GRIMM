@@ -1,0 +1,30 @@
+valid_reformated
+
+The embedding sizes for train and test: torch.Size([196703, 128]) torch.Size([26966, 128])
+Calculating eval distance map, between 26966 test ids and 5649 train EC cluster centers
+############ EC calling results using maximum separation ############
+---------------------------------------------------------------------------
+>>> total samples: 26966 | total ec: 3489 
+>>> precision: 0.92 | recall: 0.874| F1: 0.881 | AUC: 0.937 
+---------------------------------------------------------------------------
+
+test1_reformated
+
+The embedding sizes for train and test: torch.Size([196703, 128]) torch.Size([24617, 128])
+Calculating eval distance map, between 24617 test ids and 5649 train EC cluster centers
+############ EC calling results using maximum separation ############
+---------------------------------------------------------------------------
+>>> total samples: 24617 | total ec: 4252 
+>>> precision: 0.899 | recall: 0.855| F1: 0.861 | AUC: 0.928 
+---------------------------------------------------------------------------
+
+test2_reformated
+
+The embedding sizes for train and test: torch.Size([196703, 128]) torch.Size([2104, 128])
+Calculating eval distance map, between 2104 test ids and 5649 train EC cluster centers
+############ EC calling results using maximum separation ############
+---------------------------------------------------------------------------
+>>> total samples: 2104 | total ec: 2351 
+>>> precision: 0.639 | recall: 0.641| F1: 0.617 | AUC: 0.821 
+---------------------------------------------------------------------------
+

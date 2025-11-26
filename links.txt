@@ -1,0 +1,5 @@
+UniRef50: https://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref50/uniref50.fasta.gz
+Swissprot: https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
+EC labels table: https://www.uniprot.org/uniprotkb?fields=accession%2Cec%2Cxref_embl%2Cxref_refseq&query=reviewed%3Atrue&view=table
+
+note: some files must be "gunzip"-ed to decompress
