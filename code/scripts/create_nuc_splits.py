@@ -24,12 +24,15 @@ seq_mapping = pd.DataFrame({'Entry' : nuc_ids, 'Sequence' : nuc_seqs}).set_index
 
 for i in range(1, 6):
     print('Creating split {}...'.format(i))
-    entries = []
-    ecs = []
-    seqs = []
+    seen = set()  # Bug E: dedup CDS across partitions of this split (first partition wins)
     for filename in file_list:
         df_aa = pd.read_csv(directory.format(i, filename), header=0, sep='\t')
 
+        # Bug E: build a fresh frame PER FILE. Previously entries/ecs/seqs accumulated
+        # across file_list, so each output file was a cumulative superset of the prior ones.
+        entries = []
+        ecs = []
+        seqs = []
         for entry, ec in zip(df_aa['Entry'], df_aa['EC number']):
             entry_list = embl_cds_mapping[entry]
 
@@ -38,10 +41,11 @@ for i in range(1, 6):
 
             entry_list = entry_list.split(';')
             for new_entry in entry_list:
-                if new_entry in seq_mapping.keys() and new_entry not in entries:
+                if new_entry in seq_mapping.keys() and new_entry not in seen:
+                    seen.add(new_entry)
                     entries.append(new_entry)
                     ecs.append(ec)
                     seqs.append(seq_mapping[new_entry])
 
         df_nuc = pd.DataFrame({'Entry' : entries, 'EC number' : ecs, 'Sequence' : seqs})
-        df_nuc.to_csv(new_directory.format(i, filename), index=False, sep='\t')        
+        df_nuc.to_csv(new_directory.format(i, filename), index=False, sep='\t')

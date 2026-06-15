@@ -16,7 +16,7 @@ folds = []
 
 orphans_used = []
 for i in range(n_splits):
-    df = shuffle(df)
+    df = shuffle(df, random_state=SEED + i)  # seed per fold for reproducibility (Bug F)
     extra_df = pd.DataFrame(columns=df.columns)
     train = pd.DataFrame(columns=df.columns)
     valid = pd.DataFrame(columns=df.columns)
@@ -86,7 +86,7 @@ for i in range(n_splits):
     if n_sample > len(to_sample):
         n_sample = len(to_sample)
 
-    test2 = to_sample.sample(n=n_sample)
+    test2 = to_sample.sample(n=n_sample, random_state=SEED + i)  # Bug F: seed the sample
     train = pd.concat([train, orphans[~orphans.index.isin(test2.index)]])
 
     orphans_used.extend(list(test2.index)) #dont reuse orphans from previous splits
@@ -108,7 +108,7 @@ for i in range(n_splits):
     train.to_csv('./custom/split_{}/train.csv'.format(i+1), sep='\t', index=False)
     valid.to_csv('./custom/split_{}/valid.csv'.format(i+1), sep='\t', index=False)
     test.to_csv('./custom/split_{}/test1.csv'.format(i+1), sep='\t', index=False)
-    orphans.to_csv('./custom/split_{}/test2.csv'.format(i+1), sep='\t', index=False)
+    test2.to_csv('./custom/split_{}/test2.csv'.format(i+1), sep='\t', index=False)  # Bug A: was `orphans` (full set), leaking ~80% of test-2 into train
 
 #final dataset will be stratify k-fold
 le = LabelEncoder().fit(df['EC number'])
