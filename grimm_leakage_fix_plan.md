@@ -76,8 +76,17 @@ Fixes by construction: A (correct test2), B (split by cluster), D (shuffle clust
 - ✅ Re-pinned to release-2025_02 (`extract_release_2025_02.py`) — drift resolved at root (guard now drops 0 rows).
 - ✅ v2 nucleotides (`create_nuc_splits_v2.py`) — 0 leakage; in `v2_build/data/GRIMM_v2/nucleotides/`.
 - ✅ Final QC (both modalities, 5 folds): 0 leakage, 0 test-2-in-train, independent folds.
-- ✅ v1 disclosure draft (`data_patch/v1_dataset_card_disclosure.md`).
-- ⏸️ **PAUSED before HF uploads** (per PI). Next: review disclosure + splits, then push v1 patched test-2 and v2 (`EC_v2/`), then postdoc sign-off → merge to main.
+- ✅ v1 disclosure draft (`data_patch/v1_dataset_card_disclosure.md`, PI-edited).
+- ✅ EC-label whitespace bug found+fixed (normalize in `combine_data.py`); 283 spuriously-split labels merged; v2 regenerated.
+- ✅ Scripts consolidated to original names (`combine_data.py`, `create_data_splits_custom.py`, `create_nuc_splits.py`); `_v2` files removed (in git history).
+- ✅ Multi-EC handling confirmed = v1 (compound label strings kept distinct, no expansion).
+- ✅ Cross-label overlap decision: KEEP (per-label design; 0 same-label leakage). [PI]
+- ✅ v2 dataset card (`data_patch/hf_dataset_card.md`) + GitHub README updated.
+- ✅ Deploy script `push_to_hub.py` (dry-run default) — verified dry-run.
+- ⏸️ **PAUSED before HF push** (needs `--execute` + PI go). Then postdoc sign-off → merge branch to main.
+
+### ⚠️ Flag for PI before push
+Renaming live `EC/` → `EC_v1/` on HF will break any external code loading the `EC/` path from the Hub (the two submitted papers + TEACUP/SeqLengthvsFn use LOCAL caches, so they're safe). Options: proceed with rename (as requested), or also keep an `EC/` copy pointing at v1.
 
 ## Git / deployment workflow
 
