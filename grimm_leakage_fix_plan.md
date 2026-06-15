@@ -66,6 +66,18 @@ Fixes by construction: A (correct test2), B (split by cluster), D (shuffle clust
 - Methods/limitations sentence: v1 train/test-1 carry ~6% AA exact-sequence duplication (consequence of UniRef50-representative-sequence convention, Bug C); test-2 corrected to true OOD; v2 is fully leakage-free.
 - Describe v2 as the clean benchmark; reference v1 for prior-work comparability.
 
+## Progress log
+
+- ✅ Deep review + live verification (HF `42b52d6`, GitHub `b26a8ce`).
+- ✅ WS1 v1 test-2 patch — fully disjoint, 0 residual leakage, staged `data_patch/v1_test2/`.
+- ✅ WS2 v1 code fixes (A/E/F).
+- ✅ v2 split structure (`create_data_splits_v2.py`) — QC: 0 within-label cluster splits, 0 dup accessions, 0 test2-in-train, independent folds.
+- ✅ v2 AA dataset (`fetch_sequences_v2.py` + `finalize_v2.py`) — real sequences (99.998% coverage), **0 (Sequence,EC) leakage**; in `v2_build/data/GRIMM_v2/amino_acids/`.
+- ⏳ Re-pin to release-2025_02 (PI provenance call — surfaced real release-drift evidence).
+- ⏳ v2 nucleotides.
+- ⏳ HF uploads (v1 patched test-2; v2) — needs explicit go.
+- ⏳ v1 dataset README disclosure.
+
 ## Git / deployment workflow
 
 1. Commit on `fix/data-split-leakage`: code fixes (WS2), decontamination script + verification (WS1), this plan, docs.
