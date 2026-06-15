@@ -72,11 +72,12 @@ Fixes by construction: A (correct test2), B (split by cluster), D (shuffle clust
 - ✅ WS1 v1 test-2 patch — fully disjoint, 0 residual leakage, staged `data_patch/v1_test2/`.
 - ✅ WS2 v1 code fixes (A/E/F).
 - ✅ v2 split structure (`create_data_splits_v2.py`) — QC: 0 within-label cluster splits, 0 dup accessions, 0 test2-in-train, independent folds.
-- ✅ v2 AA dataset (`fetch_sequences_v2.py` + `finalize_v2.py`) — real sequences (99.998% coverage), **0 (Sequence,EC) leakage**; in `v2_build/data/GRIMM_v2/amino_acids/`.
-- ⏳ Re-pin to release-2025_02 (PI provenance call — surfaced real release-drift evidence).
-- ⏳ v2 nucleotides.
-- ⏳ HF uploads (v1 patched test-2; v2) — needs explicit go.
-- ⏳ v1 dataset README disclosure.
+- ✅ v2 AA dataset — release-2025_02 sequences (100% coverage), **0 (Sequence,EC) leakage**; in `v2_build/data/GRIMM_v2/amino_acids/`.
+- ✅ Re-pinned to release-2025_02 (`extract_release_2025_02.py`) — drift resolved at root (guard now drops 0 rows).
+- ✅ v2 nucleotides (`create_nuc_splits_v2.py`) — 0 leakage; in `v2_build/data/GRIMM_v2/nucleotides/`.
+- ✅ Final QC (both modalities, 5 folds): 0 leakage, 0 test-2-in-train, independent folds.
+- ✅ v1 disclosure draft (`data_patch/v1_dataset_card_disclosure.md`).
+- ⏸️ **PAUSED before HF uploads** (per PI). Next: review disclosure + splits, then push v1 patched test-2 and v2 (`EC_v2/`), then postdoc sign-off → merge to main.
 
 ## Git / deployment workflow
 
