@@ -73,13 +73,23 @@ Fixes by construction: A (correct test2), B (split by cluster), D (shuffle clust
 3. Build, QC, publish v2 (WS3) — explicit go.
 4. Merge `fix/data-split-leakage` → `main` when satisfied.
 
-## Open questions for PI
+## Key reframing — B and C are deviations from the PAPER, not design choices
 
-1. **[Bug C for v2]** Real per-protein AA sequences (download pinned `uniprot_sprot.fasta`) vs. keep UniRef50 representative sequences (no download, leakage-free once B/D fixed)?
-2. **v2 source data** — reconstruct base table from v1 partitions (recommended; keeps existing UniRef50 IDs) vs. re-download the full pinned 2025-05-23 UniProt release?
+The preprint (arXiv 2602.16504v1) documents the *correct* method: per-protein **SwissProt sequences** (UniRef50 used only for stratification), 2-cluster labels split **by cluster** (1 train / 1 test-1), singleton-cluster labels are orphans. The **released data does not implement this**:
+- AA `Sequence` is the **UniRef50 representative** (verified live: distinct clusters == distinct sequences == 48,966; one 196-accession cluster has 1 sequence) — Bug C.
+- Low-support handling keys on **row count** and splits **by row**, not by cluster — Bug B.
 
-### Resolved
-- v2 = fresh GRIMM-scoped regen, 50% only, existing UniRef50 IDs, no multi-EC expansion. ✓
+So fixing B + C in v2 = making the data finally match the paper. **Both submitted papers used the AA splits**, so they inherit both issues → v1 README must disclose them and steer users to v2.
+
+## Workstream 5 — v1 dataset README / card (disclosure)
+
+Add to the HF dataset card: (1) test-2 corrected to true OOD (v1 patch); (2) **known issues in v1 train/test-1** — AA sequences are UniRef50 representatives rather than per-protein SwissProt sequences (Bug C), and ~6% of AA test-1 rows share a cluster/sequence with train (Bug B); (3) recommend **v2** for new work. Keep v1 static for citation stability.
+
+### Resolved decisions
+- v2 = fresh GRIMM-scoped regen, 50% only, existing UniRef50 IDs, **no multi-EC expansion**. ✓
+- v2 **fixes Bug C → real per-protein SwissProt sequences** (pinned 2025-05 release) and **Bug B → by-cluster** low-support handling, matching the paper. ✓
 - v2 hosting = same HF repo, versioned path. ✓
-- v1 test-2 = fully disjoint from train/valid/test-1. ✓ (done, verified)
+- v1 train/test-1/valid stay **static**; test-2 patched to fully disjoint. ✓ (done, verified)
+- Live HF (`42b52d6`) == cache; GitHub (`b26a8ce`) == reviewed code. ✓
 - HF token at `~/.cache/huggingface/token`. ✓
+- Base table: reconstruct from union of v1 partitions (keeps exact UniRef50 IDs); fetch only real sequences anew. ✓
