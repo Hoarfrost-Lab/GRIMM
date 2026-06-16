@@ -14,6 +14,176 @@ task_categories:
   - text-classification
 size_categories:
   - 100K<n<1M
+configs:
+  - config_name: EC_v2_amino_acids
+    default: true
+    data_files:
+      - split: split1_train
+        path: EC_v2/amino_acids/split_1/train.csv
+      - split: split1_validation
+        path: EC_v2/amino_acids/split_1/validation.csv
+      - split: split1_test1
+        path: EC_v2/amino_acids/split_1/test1.csv
+      - split: split1_test2
+        path: EC_v2/amino_acids/split_1/test2.csv
+      - split: split2_train
+        path: EC_v2/amino_acids/split_2/train.csv
+      - split: split2_validation
+        path: EC_v2/amino_acids/split_2/validation.csv
+      - split: split2_test1
+        path: EC_v2/amino_acids/split_2/test1.csv
+      - split: split2_test2
+        path: EC_v2/amino_acids/split_2/test2.csv
+      - split: split3_train
+        path: EC_v2/amino_acids/split_3/train.csv
+      - split: split3_validation
+        path: EC_v2/amino_acids/split_3/validation.csv
+      - split: split3_test1
+        path: EC_v2/amino_acids/split_3/test1.csv
+      - split: split3_test2
+        path: EC_v2/amino_acids/split_3/test2.csv
+      - split: split4_train
+        path: EC_v2/amino_acids/split_4/train.csv
+      - split: split4_validation
+        path: EC_v2/amino_acids/split_4/validation.csv
+      - split: split4_test1
+        path: EC_v2/amino_acids/split_4/test1.csv
+      - split: split4_test2
+        path: EC_v2/amino_acids/split_4/test2.csv
+      - split: split5_train
+        path: EC_v2/amino_acids/split_5/train.csv
+      - split: split5_validation
+        path: EC_v2/amino_acids/split_5/validation.csv
+      - split: split5_test1
+        path: EC_v2/amino_acids/split_5/test1.csv
+      - split: split5_test2
+        path: EC_v2/amino_acids/split_5/test2.csv
+  - config_name: EC_v2_nucleotides
+    data_files:
+      - split: split1_train
+        path: EC_v2/nucleotides/split_1/train.csv
+      - split: split1_validation
+        path: EC_v2/nucleotides/split_1/validation.csv
+      - split: split1_test1
+        path: EC_v2/nucleotides/split_1/test1.csv
+      - split: split1_test2
+        path: EC_v2/nucleotides/split_1/test2.csv
+      - split: split2_train
+        path: EC_v2/nucleotides/split_2/train.csv
+      - split: split2_validation
+        path: EC_v2/nucleotides/split_2/validation.csv
+      - split: split2_test1
+        path: EC_v2/nucleotides/split_2/test1.csv
+      - split: split2_test2
+        path: EC_v2/nucleotides/split_2/test2.csv
+      - split: split3_train
+        path: EC_v2/nucleotides/split_3/train.csv
+      - split: split3_validation
+        path: EC_v2/nucleotides/split_3/validation.csv
+      - split: split3_test1
+        path: EC_v2/nucleotides/split_3/test1.csv
+      - split: split3_test2
+        path: EC_v2/nucleotides/split_3/test2.csv
+      - split: split4_train
+        path: EC_v2/nucleotides/split_4/train.csv
+      - split: split4_validation
+        path: EC_v2/nucleotides/split_4/validation.csv
+      - split: split4_test1
+        path: EC_v2/nucleotides/split_4/test1.csv
+      - split: split4_test2
+        path: EC_v2/nucleotides/split_4/test2.csv
+      - split: split5_train
+        path: EC_v2/nucleotides/split_5/train.csv
+      - split: split5_validation
+        path: EC_v2/nucleotides/split_5/validation.csv
+      - split: split5_test1
+        path: EC_v2/nucleotides/split_5/test1.csv
+      - split: split5_test2
+        path: EC_v2/nucleotides/split_5/test2.csv
+  - config_name: EC_v1_amino_acids
+    data_files:
+      - split: split1_train
+        path: EC_v1/amino_acids/split_1/train.csv
+      - split: split1_validation
+        path: EC_v1/amino_acids/split_1/validation.csv
+      - split: split1_test1
+        path: EC_v1/amino_acids/split_1/test1.csv
+      - split: split1_test2
+        path: EC_v1/amino_acids/split_1/test2.csv
+      - split: split2_train
+        path: EC_v1/amino_acids/split_2/train.csv
+      - split: split2_validation
+        path: EC_v1/amino_acids/split_2/validation.csv
+      - split: split2_test1
+        path: EC_v1/amino_acids/split_2/test1.csv
+      - split: split2_test2
+        path: EC_v1/amino_acids/split_2/test2.csv
+      - split: split3_train
+        path: EC_v1/amino_acids/split_3/train.csv
+      - split: split3_validation
+        path: EC_v1/amino_acids/split_3/validation.csv
+      - split: split3_test1
+        path: EC_v1/amino_acids/split_3/test1.csv
+      - split: split3_test2
+        path: EC_v1/amino_acids/split_3/test2.csv
+      - split: split4_train
+        path: EC_v1/amino_acids/split_4/train.csv
+      - split: split4_validation
+        path: EC_v1/amino_acids/split_4/validation.csv
+      - split: split4_test1
+        path: EC_v1/amino_acids/split_4/test1.csv
+      - split: split4_test2
+        path: EC_v1/amino_acids/split_4/test2.csv
+      - split: split5_train
+        path: EC_v1/amino_acids/split_5/train.csv
+      - split: split5_validation
+        path: EC_v1/amino_acids/split_5/validation.csv
+      - split: split5_test1
+        path: EC_v1/amino_acids/split_5/test1.csv
+      - split: split5_test2
+        path: EC_v1/amino_acids/split_5/test2.csv
+  - config_name: EC_v1_nucleotides
+    data_files:
+      - split: split1_train
+        path: EC_v1/nucleotides/split_1/train.csv
+      - split: split1_validation
+        path: EC_v1/nucleotides/split_1/validation.csv
+      - split: split1_test1
+        path: EC_v1/nucleotides/split_1/test1.csv
+      - split: split1_test2
+        path: EC_v1/nucleotides/split_1/test2.csv
+      - split: split2_train
+        path: EC_v1/nucleotides/split_2/train.csv
+      - split: split2_validation
+        path: EC_v1/nucleotides/split_2/validation.csv
+      - split: split2_test1
+        path: EC_v1/nucleotides/split_2/test1.csv
+      - split: split2_test2
+        path: EC_v1/nucleotides/split_2/test2.csv
+      - split: split3_train
+        path: EC_v1/nucleotides/split_3/train.csv
+      - split: split3_validation
+        path: EC_v1/nucleotides/split_3/validation.csv
+      - split: split3_test1
+        path: EC_v1/nucleotides/split_3/test1.csv
+      - split: split3_test2
+        path: EC_v1/nucleotides/split_3/test2.csv
+      - split: split4_train
+        path: EC_v1/nucleotides/split_4/train.csv
+      - split: split4_validation
+        path: EC_v1/nucleotides/split_4/validation.csv
+      - split: split4_test1
+        path: EC_v1/nucleotides/split_4/test1.csv
+      - split: split4_test2
+        path: EC_v1/nucleotides/split_4/test2.csv
+      - split: split5_train
+        path: EC_v1/nucleotides/split_5/train.csv
+      - split: split5_validation
+        path: EC_v1/nucleotides/split_5/validation.csv
+      - split: split5_test1
+        path: EC_v1/nucleotides/split_5/test1.csv
+      - split: split5_test2
+        path: EC_v1/nucleotides/split_5/test2.csv
 ---
 
 # GRIMM-EC
