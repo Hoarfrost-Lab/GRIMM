@@ -83,7 +83,8 @@ Fixes by construction: A (correct test2), B (split by cluster), D (shuffle clust
 - ✅ Cross-label overlap decision: KEEP (per-label design; 0 same-label leakage). [PI]
 - ✅ v2 dataset card (`data_patch/hf_dataset_card.md`) + GitHub README updated.
 - ✅ Deploy script `push_to_hub.py` (dry-run default) — verified dry-run.
-- ⏸️ **PAUSED before HF push** (needs `--execute` + PI go). Then postdoc sign-off → merge branch to main.
+- ✅ Branch pushed to origin; **draft PR #1** opened with COAUTHOR_REVIEW.md as description (for coauthor sign-off).
+- ⏸️ **PAUSED before HF push** (needs coauthor sign-off, then `--execute`). Then merge PR to main.
 
 ### ⚠️ Flag for PI before push
 Renaming live `EC/` → `EC_v1/` on HF will break any external code loading the `EC/` path from the Hub (the two submitted papers + TEACUP/SeqLengthvsFn use LOCAL caches, so they're safe). Options: proceed with rename (as requested), or also keep an `EC/` copy pointing at v1.
