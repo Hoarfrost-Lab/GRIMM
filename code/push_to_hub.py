@@ -20,7 +20,8 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from huggingface_hub import (HfApi, CommitOperationCopy, CommitOperationDelete)
+from huggingface_hub import (HfApi, hf_hub_download, CommitOperationAdd,
+                             CommitOperationCopy, CommitOperationDelete)
 
 REPO = "HoarfrostLab/GRIMM"
 RTYPE = "dataset"
@@ -29,14 +30,26 @@ FILES = ["train.csv", "validation.csv", "test1.csv", "test2.csv"]
 
 
 def plan_rename(api, execute):
-    files = [f for f in api.list_repo_files(REPO, repo_type=RTYPE) if f.startswith("EC/")]
-    print(f"[1] rename EC/ -> EC_v1/  ({len(files)} files, server-side copy+delete)")
+    # Determine LFS status per file: huggingface_hub 0.16.4 can server-side-COPY
+    # only LFS files. Non-LFS files (here, the small test2.csv) are downloaded and
+    # re-added instead. Both cases delete the old EC/ path.
+    info = api.repo_info(REPO, repo_type=RTYPE, files_metadata=True)
+    is_lfs = {s.rfilename: bool(getattr(s, "lfs", None)) for s in info.siblings}
+    files = [f for f in is_lfs if f.startswith("EC/")]
+    n_lfs = sum(is_lfs[f] for f in files)
+    print(f"[1] rename EC/ -> EC_v1/  ({len(files)} files: {n_lfs} LFS copy, "
+          f"{len(files)-n_lfs} non-LFS re-add)")
     if not files:
         print("    (no EC/ files found — already renamed?)")
         return
     ops = []
     for f in files:
-        ops.append(CommitOperationCopy(src_path_in_repo=f, path_in_repo="EC_v1/" + f[len("EC/"):]))
+        dest = "EC_v1/" + f[len("EC/"):]
+        if is_lfs[f]:
+            ops.append(CommitOperationCopy(src_path_in_repo=f, path_in_repo=dest))
+        elif execute:
+            local = hf_hub_download(REPO, f, repo_type=RTYPE)
+            ops.append(CommitOperationAdd(path_in_repo=dest, path_or_fileobj=local))
         ops.append(CommitOperationDelete(path_in_repo=f))
     if execute:
         api.create_commit(REPO, repo_type=RTYPE, operations=ops,
@@ -44,7 +57,7 @@ def plan_rename(api, execute):
         print("    committed.")
     else:
         for f in files[:4]:
-            print(f"    EC/{f[3:]}  ->  EC_v1/{f[3:]}")
+            print(f"    EC/{f[3:]}  ->  EC_v1/{f[3:]}  ({'LFS copy' if is_lfs[f] else 're-add'})")
         print(f"    ... ({len(files)} files total)")
 
 
