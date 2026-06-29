@@ -30,8 +30,8 @@ import pandas as pd
 
 LABEL, CLUSTER, SEED, N_SPLITS = "EC number", "UniRef50", 10297362, 5
 COLS = ["Entry", "EC number", "EMBL", "RefSeq", "UniRef50", "UniRef90", "UniRef100", "Sequence"]
-PART_FILE = {"train": "train.csv", "valid": "validation.csv",
-             "test1": "test1.csv", "test2": "test2.csv"}
+PART_FILE = {"train": "train.tsv", "valid": "validation.tsv",
+             "test1": "test1.tsv", "test2": "test2.tsv"}
 
 
 def partition_sizes(n: int) -> tuple:

@@ -19,87 +19,87 @@ configs:
     default: true
     data_files:
       - split: split1_train
-        path: EC_v2/amino_acids/split_1/train.csv
+        path: EC_v2/amino_acids/split_1/train.tsv
       - split: split1_validation
-        path: EC_v2/amino_acids/split_1/validation.csv
+        path: EC_v2/amino_acids/split_1/validation.tsv
       - split: split1_test1
-        path: EC_v2/amino_acids/split_1/test1.csv
+        path: EC_v2/amino_acids/split_1/test1.tsv
       - split: split1_test2
-        path: EC_v2/amino_acids/split_1/test2.csv
+        path: EC_v2/amino_acids/split_1/test2.tsv
       - split: split2_train
-        path: EC_v2/amino_acids/split_2/train.csv
+        path: EC_v2/amino_acids/split_2/train.tsv
       - split: split2_validation
-        path: EC_v2/amino_acids/split_2/validation.csv
+        path: EC_v2/amino_acids/split_2/validation.tsv
       - split: split2_test1
-        path: EC_v2/amino_acids/split_2/test1.csv
+        path: EC_v2/amino_acids/split_2/test1.tsv
       - split: split2_test2
-        path: EC_v2/amino_acids/split_2/test2.csv
+        path: EC_v2/amino_acids/split_2/test2.tsv
       - split: split3_train
-        path: EC_v2/amino_acids/split_3/train.csv
+        path: EC_v2/amino_acids/split_3/train.tsv
       - split: split3_validation
-        path: EC_v2/amino_acids/split_3/validation.csv
+        path: EC_v2/amino_acids/split_3/validation.tsv
       - split: split3_test1
-        path: EC_v2/amino_acids/split_3/test1.csv
+        path: EC_v2/amino_acids/split_3/test1.tsv
       - split: split3_test2
-        path: EC_v2/amino_acids/split_3/test2.csv
+        path: EC_v2/amino_acids/split_3/test2.tsv
       - split: split4_train
-        path: EC_v2/amino_acids/split_4/train.csv
+        path: EC_v2/amino_acids/split_4/train.tsv
       - split: split4_validation
-        path: EC_v2/amino_acids/split_4/validation.csv
+        path: EC_v2/amino_acids/split_4/validation.tsv
       - split: split4_test1
-        path: EC_v2/amino_acids/split_4/test1.csv
+        path: EC_v2/amino_acids/split_4/test1.tsv
       - split: split4_test2
-        path: EC_v2/amino_acids/split_4/test2.csv
+        path: EC_v2/amino_acids/split_4/test2.tsv
       - split: split5_train
-        path: EC_v2/amino_acids/split_5/train.csv
+        path: EC_v2/amino_acids/split_5/train.tsv
       - split: split5_validation
-        path: EC_v2/amino_acids/split_5/validation.csv
+        path: EC_v2/amino_acids/split_5/validation.tsv
       - split: split5_test1
-        path: EC_v2/amino_acids/split_5/test1.csv
+        path: EC_v2/amino_acids/split_5/test1.tsv
       - split: split5_test2
-        path: EC_v2/amino_acids/split_5/test2.csv
+        path: EC_v2/amino_acids/split_5/test2.tsv
   - config_name: EC_v2_nucleotides
     data_files:
       - split: split1_train
-        path: EC_v2/nucleotides/split_1/train.csv
+        path: EC_v2/nucleotides/split_1/train.tsv
       - split: split1_validation
-        path: EC_v2/nucleotides/split_1/validation.csv
+        path: EC_v2/nucleotides/split_1/validation.tsv
       - split: split1_test1
-        path: EC_v2/nucleotides/split_1/test1.csv
+        path: EC_v2/nucleotides/split_1/test1.tsv
       - split: split1_test2
-        path: EC_v2/nucleotides/split_1/test2.csv
+        path: EC_v2/nucleotides/split_1/test2.tsv
       - split: split2_train
-        path: EC_v2/nucleotides/split_2/train.csv
+        path: EC_v2/nucleotides/split_2/train.tsv
       - split: split2_validation
-        path: EC_v2/nucleotides/split_2/validation.csv
+        path: EC_v2/nucleotides/split_2/validation.tsv
       - split: split2_test1
-        path: EC_v2/nucleotides/split_2/test1.csv
+        path: EC_v2/nucleotides/split_2/test1.tsv
       - split: split2_test2
-        path: EC_v2/nucleotides/split_2/test2.csv
+        path: EC_v2/nucleotides/split_2/test2.tsv
       - split: split3_train
-        path: EC_v2/nucleotides/split_3/train.csv
+        path: EC_v2/nucleotides/split_3/train.tsv
       - split: split3_validation
-        path: EC_v2/nucleotides/split_3/validation.csv
+        path: EC_v2/nucleotides/split_3/validation.tsv
       - split: split3_test1
-        path: EC_v2/nucleotides/split_3/test1.csv
+        path: EC_v2/nucleotides/split_3/test1.tsv
       - split: split3_test2
-        path: EC_v2/nucleotides/split_3/test2.csv
+        path: EC_v2/nucleotides/split_3/test2.tsv
       - split: split4_train
-        path: EC_v2/nucleotides/split_4/train.csv
+        path: EC_v2/nucleotides/split_4/train.tsv
       - split: split4_validation
-        path: EC_v2/nucleotides/split_4/validation.csv
+        path: EC_v2/nucleotides/split_4/validation.tsv
       - split: split4_test1
-        path: EC_v2/nucleotides/split_4/test1.csv
+        path: EC_v2/nucleotides/split_4/test1.tsv
       - split: split4_test2
-        path: EC_v2/nucleotides/split_4/test2.csv
+        path: EC_v2/nucleotides/split_4/test2.tsv
       - split: split5_train
-        path: EC_v2/nucleotides/split_5/train.csv
+        path: EC_v2/nucleotides/split_5/train.tsv
       - split: split5_validation
-        path: EC_v2/nucleotides/split_5/validation.csv
+        path: EC_v2/nucleotides/split_5/validation.tsv
       - split: split5_test1
-        path: EC_v2/nucleotides/split_5/test1.csv
+        path: EC_v2/nucleotides/split_5/test1.tsv
       - split: split5_test2
-        path: EC_v2/nucleotides/split_5/test2.csv
+        path: EC_v2/nucleotides/split_5/test2.tsv
   - config_name: EC_v1_amino_acids
     data_files:
       - split: split1_train
@@ -206,13 +206,18 @@ Two modalities are provided: **amino acids** (per-protein SwissProt sequences) a
 ## Structure
 
 ```
-EC_v2/  (and EC_v1/)
-  amino_acids/   split_1 … split_5 / {train, validation, test1, test2}.csv
-  nucleotides/   split_1 … split_5 / {train, validation, test1, test2}.csv
+EC_v2/   amino_acids/   split_1 … split_5 / {train, validation, test1, test2}.tsv
+         nucleotides/   split_1 … split_5 / {train, validation, test1, test2}.tsv
+EC_v1/   amino_acids/   split_1 … split_5 / {train, validation, test1, test2}.csv
+         nucleotides/   split_1 … split_5 / {train, validation, test1, test2}.csv
 ```
 
+All files are **tab-separated**. v2 uses the `.tsv` extension; v1 retains the original
+`.csv` extension (tab-separated despite the name) for release stability — load v1 with
+`pd.read_csv(path, sep="\t")`.
+
 Columns — amino acids: `Entry, EC number, EMBL, RefSeq, UniRef50, UniRef90, UniRef100, Sequence`;
-nucleotides: `Entry` (EMBL CDS id), `EC number`, `Sequence`. Files are tab-separated.
+nucleotides: `Entry` (EMBL CDS id), `EC number`, `Sequence`.
 
 The 5 folds are **not** a standard k-fold: each is an independent train/valid/test
 partition that preserves UniRef50 clusters. Train and evaluate the 5 folds as

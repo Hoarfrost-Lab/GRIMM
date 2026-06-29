@@ -19,8 +19,9 @@ The HuggingFace repo hosts two versions of the EC splits:
   See the dataset card for known limitations. Prefer v2.
 
 Both versions provide `amino_acids/` and `nucleotides/`, each with
-`split_1`…`split_5` and `{train, validation, test1, test2}.csv`. The custom split is
-not a true k-fold but preserves UniRef50 clusters; use the 5 folds as independent
+`split_1`…`split_5` and `{train, validation, test1, test2}`. Files are tab-separated:
+v2 uses `.tsv`; v1 keeps the original `.csv` extension (tab-separated). The custom split
+is not a true k-fold but preserves UniRef50 clusters; use the 5 folds as independent
 models (individually or as an ensemble).
 
 ## Recreate GRIMM-EC v2

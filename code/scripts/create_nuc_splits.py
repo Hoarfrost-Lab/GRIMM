@@ -18,8 +18,8 @@ from pathlib import Path
 
 import pandas as pd
 
-PART_FILE = {"train": "train.csv", "valid": "validation.csv",
-             "test1": "test1.csv", "test2": "test2.csv"}
+PART_FILE = {"train": "train.tsv", "valid": "validation.tsv",
+             "test1": "test1.tsv", "test2": "test2.tsv"}
 ORDER = ["train", "valid", "test1", "test2"]  # dedup precedence
 
 
