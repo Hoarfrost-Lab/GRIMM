@@ -18,6 +18,7 @@ Auth uses the cached HuggingFace token (~/.cache/huggingface/token) or HF_TOKEN.
 from __future__ import annotations
 
 import argparse
+import time
 from pathlib import Path
 
 from huggingface_hub import (HfApi, hf_hub_download, CommitOperationAdd,
@@ -52,8 +53,8 @@ def plan_rename(api, execute):
             ops.append(CommitOperationAdd(path_in_repo=dest, path_or_fileobj=local))
         ops.append(CommitOperationDelete(path_in_repo=f))
     if execute:
-        api.create_commit(REPO, repo_type=RTYPE, operations=ops,
-                          commit_message="Rename EC -> EC_v1 (preserve v1 release)")
+        retry(lambda: api.create_commit(REPO, repo_type=RTYPE, operations=ops,
+                          commit_message="Rename EC -> EC_v1 (preserve v1 release)"), "rename commit")
         print("    committed.")
     else:
         for f in files[:4]:
@@ -61,11 +62,24 @@ def plan_rename(api, execute):
         print(f"    ... ({len(files)} files total)")
 
 
+def retry(fn, what, tries=5):
+    """Retry on transient HF errors (e.g. 504 Gateway Timeout) with backoff."""
+    for i in range(tries):
+        try:
+            return fn()
+        except Exception as e:
+            if i == tries - 1:
+                raise
+            wait = 10 * (i + 1)
+            print(f"    ! {what} failed ({type(e).__name__}); retry {i+1}/{tries-1} in {wait}s")
+            time.sleep(wait)
+
+
 def upload(api, local: Path, repo_path: str, execute):
     print(f"    {'UPLOAD' if execute else 'would upload'}: {local}  ->  {repo_path}")
     if execute:
-        api.upload_file(path_or_fileobj=str(local), path_in_repo=repo_path,
-                        repo_id=REPO, repo_type=RTYPE)
+        retry(lambda: api.upload_file(path_or_fileobj=str(local), path_in_repo=repo_path,
+                                      repo_id=REPO, repo_type=RTYPE), repo_path)
 
 
 def main():
@@ -88,12 +102,12 @@ def main():
             f = args.patched_test2 / mod / f"split_{s}" / "test2.csv"
             upload(api, f, f"EC_v1/{mod}/split_{s}/test2.csv", args.execute)
 
-    print("\n[3] upload corrected EC_v2 tree")
-    for mod in MODALITIES:
-        for s in range(1, 6):
-            for fn in FILES:
-                f = args.v2_root / mod / f"split_{s}" / fn
-                upload(api, f, f"EC_v2/{mod}/split_{s}/{fn}", args.execute)
+    print("\n[3] upload corrected EC_v2 tree (single folder commit)")
+    print(f"    {'UPLOAD' if args.execute else 'would upload'}: {args.v2_root}/  ->  EC_v2/")
+    if args.execute:
+        retry(lambda: api.upload_folder(folder_path=str(args.v2_root), path_in_repo="EC_v2",
+                                        repo_id=REPO, repo_type=RTYPE,
+                                        commit_message="Add corrected GRIMM-EC v2"), "EC_v2 folder")
 
     print("\n[4] upload dataset card (README.md)")
     upload(api, args.card, "README.md", args.execute)
